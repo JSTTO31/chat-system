@@ -60,10 +60,17 @@
         <v-btn class="ml-2" variant="plain" icon="mdi-dots-horizontal-circle"></v-btn>
     </v-app-bar>
     <v-main class="d-flex flex-column ">
-        <div></div>
+        <!-- <div class="h-100 bg-red">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, consequuntur? Eius corporis explicabo dicta, laboriosam ipsa architecto! Cupiditate aliquam necessitatibus non autem quae velit ipsum eligendi, modi eos odio esse.
+        </div> -->
         <v-spacer></v-spacer>
-        <div class="pa-5">
-            <v-text-field hide-details variant="solo-filled" label="Enter your message" rounded="lg" append-inner-icon="mdi-send"></v-text-field>
+        <v-divivder class="border"></v-divivder>
+        <div class="pa-2 d-flex align-center">
+            <v-btn icon="mdi-image" color="primary" class="ml-2" variant="text"></v-btn>
+            <v-btn icon="mdi-file" color="primary" class="ml-2" variant="text"></v-btn>
+            <v-btn icon="mdi-emoticon-outline" color="primary" class="ml-2" variant="text"></v-btn>
+            <v-text-field class="mx-4" single-line hide-details variant="solo-filled" flat label="Enter your message" rounded="lg" ></v-text-field>
+            <v-btn icon="mdi-thumb-up" color="primary" variant="text"></v-btn>
         </div>
     </v-main>
 </template>
