@@ -14,5 +14,10 @@
     "vue": "^3.4.14",
     "vue-router": "^4.2.5",
     "vuetify-nuxt-module": "^0.10.2"
+  },
+  "dependencies": {
+    "@pinia/nuxt": "^0.5.1",
+    "@vuelidate/core": "^2.0.3",
+    "@vuelidate/validators": "^2.0.4"
   }
 }
