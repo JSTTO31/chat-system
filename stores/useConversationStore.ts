@@ -1,3 +1,4 @@
+import type { Socket } from "socket.io-client"
 import type { User } from "./useUserStore"
 
 type Message = {
@@ -24,16 +25,14 @@ export interface Conversation {
 export const useConversationStore = defineStore('conversation', () => {
     const conversations = ref<Conversation[] | null>(null)
     const conversation = ref<Conversation | null>(null)
+    const room = ref<Socket | null>(null)
 
     async function fetchConversation(){
         try {
             const response = await useApiFetch('/conversations', {})
             const {data, error} = response;
             if(!error.value){
-                conversations.value = data.value.conversations
-                if(conversations.value && conversations.value.length > 0){
-                    conversation.value = conversations.value[0]
-                }
+                conversations.value = data.value.conversations.slice(0, 5)
             }
             return response
         } catch (error) {
@@ -60,5 +59,5 @@ export const useConversationStore = defineStore('conversation', () => {
     }
 
 
-    return {fetchConversation, sendMessage, conversations, conversation}
+    return {fetchConversation, sendMessage, conversations, conversation, room}
 })

@@ -1,6 +1,6 @@
 <template>
-    <div style="height: 610px;overflow-y: auto;">
-        <div v-if="conversation" class="pa-5 pt-10">
+    <div style="height: 610px;overflow-y: auto;" id="container">
+        <div v-if="conversation" class="px-5 pt-10">
             <div class="d-flex align-center flex-column">
                 <v-avatar size="150">
                     <v-img :src="'https://source.unsplash.com/random/250x250/?person&' + conversation._id"></v-img>
@@ -11,11 +11,11 @@
            <div class="pt-10">
             <div class="d-flex" v-for="message, index in conversation.messages">
                 <div class="w-75 d-flex justify-start mb-2" v-if="user && message.from != user._id">
-                    <span class="pa-2 bg-grey-lighten-2 rounded-pill px-4" >{{ message.text }}</span>
+                    <span class="pa-2 bg-grey-lighten-2 rounded-lg px-4" >{{ message.text }}</span>
                 </div>
                 <v-spacer></v-spacer>
                 <div class="w-75 d-flex justify-end mb-2" v-if="user && message.from == user._id">
-                    <span class="pa-2 bg-primary rounded-pill px-4" >{{ message.text }}</span>
+                    <span class="pa-2 bg-primary rounded-lg px-4" >{{ message.text }}</span>
                 </div>
             </div>
            </div>
@@ -26,6 +26,24 @@
 <script setup lang="ts">
 const {conversation} = storeToRefs(useConversationStore())
 const {user} = storeToRefs(useUserStore())
+let main : HTMLElement | null = null
+let timer : null | NodeJS.Timeout = null
+watch(() => conversation.value?.messages.length, () => {
+    if(main){
+        if(timer) clearTimeout(timer)
+        timer = setTimeout(() => {
+            if(main)
+            main.scrollTo(0,main.scrollHeight)
+        }, 200);
+    }
+})
+
+onMounted(() => {
+    main = document.getElementById('container')
+    if(main){
+        main.scrollTo(0, main.scrollHeight)
+    }
+})
 </script>
 
 <style scoped>

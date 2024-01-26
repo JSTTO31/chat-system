@@ -1,5 +1,5 @@
 <template>
-     <v-card @click="conversation = convo" :variant="conversation && conversation._id == convo._id ? 'tonal' : 'elevated'" flat class="pa-4 border-b rounded-0">
+     <v-card @click="selectConversation" :variant="conversation && conversation._id == convo._id ? 'tonal' : 'elevated'" flat class="pa-4 border-b rounded-0">
         <div class="d-flex">
             <v-avatar size="50">
                 <v-img :src="'https://source.unsplash.com/random/250x250/?person&' + convo._id"></v-img>
@@ -15,13 +15,25 @@
 </template>
 
 <script setup lang="ts">
+import { io, Socket } from "socket.io-client";
+
 const props = defineProps<{convo: Conversation}>()
-const {conversation} = storeToRefs(useConversationStore())
-const room = window.socket.emit('join_room', props.convo._id)
+const {conversation, room: roomStore, conversations} = storeToRefs(useConversationStore())
+const socket = io('http://localhost:3001')
+const room = socket.emit('join_room', props.convo._id)
 
+room.on('message', ({room, message}) => {
+    conversation.value?.messages.push(message)
+})
 
-window.socket.on('message', ({room, text}) => {
-    console.log(text);
+const selectConversation = ()=> {
+    conversation.value = props.convo
+}
+
+onMounted(() => {
+    if(conversations.value && props.convo._id == conversations.value[0]._id){
+        selectConversation()
+    }
 })
 
 
