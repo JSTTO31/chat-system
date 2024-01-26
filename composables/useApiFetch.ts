@@ -1,7 +1,7 @@
 import type { AsyncData } from "nuxt/dist/app/composables"
 
 //@ts-ignore
-export default async (url: string, options: Object) : Promise<AsyncData<DataT, ErrorT>> => {
+export default async (url: string, options: Object ) : Promise<AsyncData<DataT, ErrorT>> => {
     const {token} = storeToRefs(useUserStore())
 
     return useFetch('http://localhost:3001/api' + url, {

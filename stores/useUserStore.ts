@@ -1,6 +1,6 @@
 
 
-type User = {
+export type User = {
     _id: number,
     name: string,
     email: String,
@@ -9,6 +9,7 @@ type User = {
 
 export const useUserStore = defineStore('user', () => {
     const users = ref<User[]>([])
+    const selected_user = ref<User | null>(null)
     const user = ref<User | null>(null)
     const token = ref(null) 
 
@@ -19,6 +20,9 @@ export const useUserStore = defineStore('user', () => {
         if(!error.value){
             //@ts-ignore
             users.value = data.value.users
+            if(users.value.length > 0){
+                selected_user.value = users.value[0]
+            }
         }
         return response
     }
@@ -61,5 +65,19 @@ export const useUserStore = defineStore('user', () => {
         return response
     }
 
-    return {login, register, fetchUsers, logout, users, user, token}
+    async function sendMessage(text: string){
+        if(!selected_user.value || !text) return
+        try {
+            const response = await useApiFetch(`/users/${selected_user.value._id}/messages`, {method: 'POST', body: {text}})
+            const {error, data} = response;
+            console.log(error.value);
+            
+            return response
+        } catch (error) {
+            console.error(error)
+            return error
+        }
+    }
+
+    return {login, register, fetchUsers, logout, sendMessage, users, user, token, selected_user}
 })
