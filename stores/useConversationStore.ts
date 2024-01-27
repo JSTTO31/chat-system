@@ -2,7 +2,7 @@ import type { Socket } from "socket.io-client"
 import type { User } from "./useUserStore"
 
 type Message = {
-    _id: Number,
+    _id: string,
     conversation: Number,
     text: String,
     from: Number,
@@ -11,7 +11,7 @@ type Message = {
 }
 
 export interface Conversation {
-    _id: number,
+    _id: string,
     persons: User[],
     type: String,
     messages: Message[],

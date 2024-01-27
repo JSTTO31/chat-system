@@ -20,6 +20,12 @@
             </div>
            </div>
         </div>
+        <div class="d-flex align-center pl-5" v-if="conversation && isTyping">
+            <v-avatar size="25">
+                <v-img :src="'https://source.unsplash.com/random/250x250/?person&' + conversation._id"></v-img>
+            </v-avatar>
+            <typing-loading></typing-loading>
+        </div>
     </div>
 </template>
 
@@ -28,6 +34,8 @@ const {conversation} = storeToRefs(useConversationStore())
 const {user} = storeToRefs(useUserStore())
 let main : HTMLElement | null = null
 let timer : null | NodeJS.Timeout = null
+const isTyping = inject('typing') as Ref<string>
+let delay_show : NodeJS.Timeout | null = null
 watch(() => conversation.value?.messages.length, () => {
     if(main){
         if(timer) clearTimeout(timer)
@@ -37,6 +45,19 @@ watch(() => conversation.value?.messages.length, () => {
         }, 200);
     }
 })
+
+watch(isTyping, (current) => {
+    if(current){
+        if(delay_show) clearTimeout(delay_show)
+        delay_show = setTimeout(() => {
+            if(main){
+                main.scrollTo(0, main.scrollHeight)
+            }
+        }, 500);
+    }
+})
+
+
 
 onMounted(() => {
     main = document.getElementById('container')

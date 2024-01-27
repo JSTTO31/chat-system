@@ -9,13 +9,28 @@
         </div>
         <v-spacer></v-spacer>
         <v-btn class="ml-2" variant="plain" icon="mdi-phone"></v-btn>
-        <v-btn class="ml-2" variant="plain" icon="mdi-video"></v-btn>
+        <v-btn class="ml-2" variant="plain" icon="mdi-video" @click="openNewWindow"></v-btn>
         <v-btn class="ml-2" variant="plain" icon="mdi-dots-horizontal-circle"></v-btn>
     </v-app-bar>
 </template>
 
 <script setup lang="ts">
 const {conversation} = storeToRefs(useConversationStore())
+let tab : Window | null = null
+const openNewWindow = () => {
+    if(tab){
+        tab.focus()
+        return
+    }
+    tab = window.open("http://localhost:3000/call", '_blank', 'width=1250,height=750')
+}
+
+window.addEventListener("message", (event) => {
+    const message = event.data;
+    if(message?.close){
+        tab = null
+    }
+})
 </script>
 
 <style scoped>
