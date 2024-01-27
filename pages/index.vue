@@ -11,7 +11,7 @@
             <v-btn variant="text" size="50" class="my-2" icon="mdi-inbox" @click=""></v-btn>
             <v-btn variant="text" size="50" class="my-2" icon="mdi-cog" @click=""></v-btn>
             <v-btn variant="text" size="50" class="my-2" icon="mdi-logout" @click=""></v-btn>
-
+            
             <v-spacer></v-spacer>
         </v-list>
     </v-navigation-drawer>

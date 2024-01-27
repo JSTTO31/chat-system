@@ -19,9 +19,6 @@ export interface Conversation {
     updatedAt: string
 }
 
-
-
-
 export const useConversationStore = defineStore('conversation', () => {
     const conversations = ref<Conversation[] | null>(null)
     const conversation = ref<Conversation | null>(null)
@@ -34,6 +31,21 @@ export const useConversationStore = defineStore('conversation', () => {
             if(!error.value){
                 conversations.value = data.value.conversations.slice(0, 5)
             }
+            return response
+        } catch (error) {
+            console.error(error)
+            return error
+        }
+    }
+
+    async function getConversationById(id: string){
+        try {
+            const response = await useApiFetch(`/conversations/${id}`, {method: 'POST'})
+            const {error, data} = response;
+            if(!error.value){
+                conversation.value = data.value.conversation
+            }
+            
             return response
         } catch (error) {
             console.error(error)
@@ -59,5 +71,5 @@ export const useConversationStore = defineStore('conversation', () => {
     }
 
 
-    return {fetchConversation, sendMessage, conversations, conversation, room}
+    return {fetchConversation, sendMessage, getConversationById, conversations, conversation, room}
 })
