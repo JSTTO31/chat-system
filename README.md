@@ -68,11 +68,7 @@ Key Learning Objectives:
 
 SwiftChat isn't just a project; it's a reflection of my journey as a student, a reminder of the endless possibilities that await when passion meets perseverance. And as I continue to chart my path, I'm excited to see where the lessons learned from SwiftChat will take me, knowing that the adventure has only just begun.
 
-Use the `BLANK_README.md` to get started.
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 ### Built With
 
