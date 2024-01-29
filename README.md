@@ -36,19 +36,16 @@
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
+        <li><a href="#project-setup">Prerequisites</a></li>
+        <li><a href="#compiles-and-hot-reloads-for-development">Compiles and hot-reloads for development</a></li>
+        <li><a href="#compiles-and-minifies-for-production">Compiles and minifies for production</a></li>
+        <li><a href="#lints-and-fixes-files">Lints and fixes files</a></li>
+        <li><a href="#customize-configuration">Customize configuration</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
-
 
 
 <!-- ABOUT THE PROJECT -->
@@ -83,12 +80,12 @@ In this section, I'll highlight the key frameworks and libraries that laid the g
 
 
 <!-- GETTING STARTED -->
-## Getting Started
+### Getting Started
 
 This is an example of how you may give instructions on setting up your project locally.
 To get a local copy up and running follow these simple example steps.
 
-## Project setup
+### Project setup
 
 ```
 # yarn
@@ -101,7 +98,7 @@ npm install
 pnpm install
 ```
 
-## Compiles and hot-reloads for development
+### Compiles and hot-reloads for development
 
 ```
 # yarn
@@ -114,7 +111,7 @@ npm run dev
 pnpm dev
 ```
 
-## Compiles and minifies for production
+### Compiles and minifies for production
 
 ```
 # yarn
@@ -127,7 +124,7 @@ npm run build
 pnpm build
 ```
 
-## Lints and fixes files
+### Lints and fixes files
 
 ```
 # yarn
@@ -140,7 +137,7 @@ npm run lint
 pnpm lint
 ```
 
-## Customize configuration
+### Customize configuration
 
 See [Configuration Reference](https://vitejs.dev/config/).
 
@@ -160,25 +157,11 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+Your Name - [joshuasottoelyen@gmail.com](joshuasottoelyen@gmail.com)
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
-
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
-
-* 
+Project Link: [https://github.com/JSTTO31/chat-system](https://github.com/JSTTO31/chat-system)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
 
 
 
