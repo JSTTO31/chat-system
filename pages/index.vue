@@ -1,7 +1,7 @@
 <template>
     <v-navigation-drawer width="65" color="black" class="pa-0 d-flex flex-column">
         <v-list nav class="d-flex flex-column h-100 pt-2 px-0 align-center">
-            <v-avatar size="45" class="mt-2">
+            <v-avatar size="50" class="mt-1">
                 <v-img :src="'https://source.unsplash.com/random/250x250/?person'"></v-img>
             </v-avatar>
             <v-spacer></v-spacer>

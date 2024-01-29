@@ -6,7 +6,7 @@
 
 <script setup>
 useHead({
-  link: [{ rel: 'icon', type: 'image/x-icon', href: '/twitter.png' }]
+  link: [{ rel: 'icon', type: 'image/x-icon', href: '/logo.png' }]
 })
 
 </script>

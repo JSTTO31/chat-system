@@ -1,5 +1,5 @@
 <template>
-    <div style="height: 610px;overflow-y: auto;" id="container">
+    <div style="height: 600px;overflow-y: auto;" id="container">
         <div v-if="conversation" class="px-5 pt-10">
             <div class="d-flex align-center flex-column">
                 <v-avatar size="150">
@@ -9,7 +9,7 @@
                 <h4 class="font-weight-regular">You're friend in swift chat</h4>
             </div>
            <div class="pt-10">
-            <div class="d-flex" v-for="message, index in conversation.messages">
+            <div class="d-flex my-4" v-for="message, index in conversation.messages">
                 <div class="w-75 d-flex justify-start mb-2" v-if="user && message.from != user._id">
                     <span class="pa-2 bg-grey-lighten-2 rounded-lg px-4" >{{ message.text }}</span>
                 </div>
