@@ -12,36 +12,35 @@
 </template>
 
 <script setup lang="ts">
-import { Socket } from "socket.io-client";
 const text = ref('')
 const $conversation = useConversationStore()
-const {conversation} = storeToRefs($conversation)
+const {conversation, room} = storeToRefs($conversation)
 const {user} = storeToRefs(useUserStore())
-const socket = inject('socket') as Socket
 let textField = ref();
 let typing_timeout : NodeJS.Timeout | null = null
 
 const sendMessage = () => {
-    if(conversation.value && user.value){
-        socket.emit('send-message', {room: conversation.value?._id, message: {
+    if(conversation.value && user.value && room.value){
+        room.value.emit('send-message', {room: conversation.value?._id, message: {
             conversation: conversation.value._id,
             text: text.value,
             from: user.value._id
         }}) 
     }
     text.value = ''
-    
 }
 
 watch(text, (current) => {
-    if(socket){
+    if(room.value){
         if(!current){
-            socket.emit("stop-typing",{room: conversation.value?._id, person_id: user.value?._id})
+            room.value.emit("stop-typing",{room: conversation.value?._id, person_id: user.value?._id})
         }else{
-            socket.emit("typing", {room: conversation.value?._id, person_id: user.value?._id})
+            room.value.emit("typing", {room: conversation.value?._id, person_id: user.value?._id})
             if(typing_timeout) clearTimeout(typing_timeout)
             typing_timeout = setTimeout(() => {
-                socket.emit("stop-typing",{room: conversation.value?._id, person_id: user.value?._id})
+                if(room.value){
+                    room.value.emit("stop-typing",{room: conversation.value?._id, person_id: user.value?._id})
+                }
             }, 2500)
 
         }

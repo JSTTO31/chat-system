@@ -9,16 +9,14 @@
         </div>
         <v-spacer></v-spacer>
         <v-btn class="ml-2" variant="plain" icon="mdi-phone"></v-btn>
-        <v-btn class="ml-2" variant="plain" icon="mdi-video" @click="$call.callStart({conversation, caller: true, room:null})"></v-btn>
+        <v-btn class="ml-2" variant="plain" icon="mdi-video" @click="$conversation.openCallWindow({conversation, caller: true, room:null})"></v-btn>
         <v-btn class="ml-2" variant="plain" icon="mdi-dots-horizontal-circle"></v-btn>
     </v-app-bar>
 </template>
 
 <script setup lang="ts">
-import { useCallStore } from '~/stores/useCallStore';
 const {conversation} = storeToRefs(useConversationStore())
-const {user} = storeToRefs(useUserStore())
-const $call = useCallStore()
+const $conversation = useConversationStore()
 </script>
 
 <style scoped>
