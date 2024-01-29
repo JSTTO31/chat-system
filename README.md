@@ -53,7 +53,7 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-[![Swift chat screenshot][./public/screenshot.png]](https://github.com/JSTTO31/chat-system)
+[![Swift chat screenshot][product-screenshot]](https://github.com/JSTTO31/chat-system)
 
 SwiftChat represents a student-driven endeavor aimed at studying and implementing real-time communication features within a chat system. Developed by students passionate about exploring the dynamics of instant messaging and voice/video calls, SwiftChat serves as a learning platform and practical exploration of modern communication technologies.
 
@@ -192,4 +192,11 @@ Use this space to list resources you find helpful and would like to give credit 
 * 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+
+
+
+[product-screenshot]: images/screenshot.png
 
