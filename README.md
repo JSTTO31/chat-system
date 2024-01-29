@@ -158,8 +158,9 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [joshuasottoelyen@gmail.com](joshuasottoelyen@gmail.com)
-
+GMAIL:[joshuasottoelyen@gmail.com](joshuasottoelyen@gmail.com)
+FACEBOOK:[https://www.facebook.com/james.rei.3538](https://www.facebook.com/james.rei.3538)
+LINKIN:[https://www.linkedin.com/in/joshua-sotto-b5a199288/](https://www.linkedin.com/in/joshua-sotto-b5a199288/)
 Project Link: [https://github.com/JSTTO31/chat-system](https://github.com/JSTTO31/chat-system)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
