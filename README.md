@@ -53,18 +53,16 @@
 ## About The Project
 [![Swift chat screenshot][product-screenshot]](https://github.com/JSTTO31/chat-system)
 
-SwiftChat represents a student-driven endeavor aimed at studying and implementing real-time communication features within a chat system. Developed by students passionate about exploring the dynamics of instant messaging and voice/video calls, SwiftChat serves as a learning platform and practical exploration of modern communication technologies.
+SwiftChat embodies the collaborative efforts of passionate students dedicated to exploring and implementing real-time communication features within a chat system. As creators, we embarked on this journey to delve into the dynamics of instant messaging and voice/video calls, transforming SwiftChat into a practical platform for learning and innovation in modern communication technologies.
 
-Key Learning Objectives:
-* Real-Time Messaging: SwiftChat delves into the intricacies of real-time messaging, studying protocols and techniques to ensure instant message delivery and synchronization.
+Our key learning objectives encompassed various aspects:
 
-* Voice/Video Calls: Students explore the complexities of implementing voice and video call functionality, studying protocols like WebRTC and examining the challenges of real-time media streaming.
+- **Real-Time Messaging:** We immersed ourselves in the intricacies of real-time messaging, mastering protocols and techniques to ensure seamless message delivery and synchronization.
+- **Voice/Video Calls:** Through rigorous exploration, we tackled the complexities of integrating voice and video call functionality, studying protocols such as WebRTC and overcoming challenges in real-time media streaming.
+- **User Interface Design:** SwiftChat prioritized user experience, as we applied principles of UI/UX design to craft an intuitive and engaging platform for seamless communication.
+- **Backend Development:** Our journey extended to backend development, where we explored technologies like WebSocket to establish persistent connections and support real-time communication.
 
-* User Interface Design: SwiftChat incorporates principles of user interface (UI) and user experience (UX) design, allowing students to create an intuitive and engaging platform for seamless communication.
-
-* Backend Development: The project involves backend development to support real-time communication, exploring technologies like WebSocket for establishing persistent connections.
-
-SwiftChat isn't just a project; it's a reflection of my journey as a student, a reminder of the endless possibilities that await when passion meets perseverance. And as I continue to chart my path, I'm excited to see where the lessons learned from SwiftChat will take me, knowing that the adventure has only just begun.
+SwiftChat symbolizes more than a mere project; it mirrors our collective journey as students, highlighting the boundless possibilities when passion intertwines with perseverance. As the creator, I eagerly anticipate the unfolding adventure ahead, fueled by the invaluable lessons gleaned from SwiftChat, knowing that our exploration has only just begun.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
