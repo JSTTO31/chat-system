@@ -14,7 +14,7 @@
     <img src="./public/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">SwiftChat: Fast and Friendly Communication Platform</h3>
+  <h3 align="center">SwiftChat</h3>
 
   <p align="center">
     Connecting People Seamlessly with SwiftChat: Your Go-To Chat System
@@ -54,7 +54,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Swift chat screenshot][./public/screenshot.png]](https://github.com/JSTTO31/chat-system)
 
 There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
 
