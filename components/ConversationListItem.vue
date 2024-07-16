@@ -31,11 +31,12 @@
 
 <script setup lang="ts">
 import { io } from "socket.io-client";
+const config = useRuntimeConfig()
 const props = defineProps<{convo: Conversation}>()
 const {conversation, conversations, room: roomStore, someoneCalling,} = storeToRefs(useConversationStore())
 const $conversation = useConversationStore()
 const {user} = storeToRefs(useUserStore())
-const socket = io('http://localhost:3001')
+const socket = io(config.public.backend_url as string)
 const room = socket.emit('join_room', props.convo._id)
 const typing = ref(false)
 
