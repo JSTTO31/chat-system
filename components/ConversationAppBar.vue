@@ -1,7 +1,7 @@
 <template>
     <v-app-bar class="border-b px-5" flat v-if="conversation">
         <v-avatar size="45" class="">
-            <v-img :src="'https://source.unsplash.com/random/250x250/?person&' + conversation._id"></v-img>
+            <v-img :src="'https://avatar.iran.liara.run/public?number=' + conversation.persons[0]._id"></v-img>
         </v-avatar>
         <div class="d-flex flex-column pl-5">
             <h3>{{ conversation.persons[0].name }}</h3>

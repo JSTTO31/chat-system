@@ -2,7 +2,7 @@
      <v-list-item :to="{name: 'index-r-conversation_id', params: {conversation_id: convo._id}}" flat class="py-4 border-b rounded-0">
         <div class="d-flex">
             <v-avatar size="55">
-                <img :src="'https://source.unsplash.com/random/250x250/?person&' + convo._id" />
+                <v-img :src="'https://avatar.iran.liara.run/public?number=' + convo.persons[0]._id" />
             </v-avatar>
             <div class="pl-5">
                 <h4 class="text-black">{{ convo.persons[0].name }}</h4>
@@ -58,10 +58,8 @@ room.on('message', ({room, message}) => {
     $conversation.setCallStatus(props.convo._id, 'ongoing')
 })
 .on('calling', ({room, person}) => {
-    if(!someoneCalling.value && user.value && person._id != user.value?._id) {
         $conversation.openCallWindow({conversation: props.convo, caller: false, room})
         $conversation.setCallStatus(props.convo._id, 'someone-calling')
-    }
 })
 .on('calling-stop', (room) => {
     $conversation.unsetWindowCall()

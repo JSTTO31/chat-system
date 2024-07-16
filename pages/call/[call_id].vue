@@ -4,19 +4,22 @@
         <canvas id="call-canvas" class="w-100 h-100 d-none">
         </canvas>
         <div style="position: fixed;top: 50%;left: 50%;transform: translate(-50%, -50%);" class="text-white">
-            <div v-if="conversation" >
-                <v-avatar size="250">
-                    <v-img :src="'https://source.unsplash.com/random/250x250/?person&' + conversation._id"></v-img>
-                </v-avatar>
-                <h2 class="text-center mt-5">{{ conversation.persons[0].name }}</h2>
-                <div v-if="!streaming">
-                    <h4 class="text-center font-weight-regular" v-if="declined && isCaller">Call Declined</h4>
-                    <h4 class="text-center font-weight-regular" v-else-if="hangup">Call ended</h4>
-                    <h4 class="text-center font-weight-regular" v-else>Ringing</h4>
+            <div v-if="conversation">
+                <div v-if="(streaming && !settings.video) || !streaming">
+                    <v-avatar size="250">
+                        <v-img :src="'https://avatar.iran.liara.run/public?number=' + conversation.persons[0]._id"></v-img>
+                    </v-avatar>
+                    <h2 class="text-center mt-5">{{ conversation.persons[0].name }}</h2>
+                    <div v-if="!streaming">
+                        <h4 class="text-center font-weight-regular" v-if="declined && isCaller">Call Declined</h4>
+                        <h4 class="text-center font-weight-regular" v-else-if="hangup">Call ended</h4>
+                        <h4 class="text-center font-weight-regular" v-else>Ringing</h4>
+                    </div>
+                    <div v-else>
+                        <!-- {{ timer }} -->
+                    </div>
                 </div>
-                <div>
-                    {{  }}
-                </div>
+               
             </div>
             <div v-else>
                 <v-progress-circular indeterminate color="primary" size="75"></v-progress-circular>
@@ -25,7 +28,7 @@
         <v-card style="position: fixed;bottom: 80px;right: 10px;" class="rounded-lg bg-grey-darken-3" height="150" width="250">
             <div v-if="!settings.video && user" class="h-100 w-100 d-flex justify-center flex-column align-center">
                 <v-avatar size="65">
-                    <v-img :src="'https://source.unsplash.com/random/250x250/?person&' + user._id"></v-img>
+                    <v-img :src="'https://avatar.iran.liara.run/public?number=' + user._id"></v-img>
                 </v-avatar>
                 <h5 class="text-center mt-4">{{user.name}} (You)</h5>
             </div>
@@ -66,7 +69,7 @@ const {conversation} = storeToRefs(useConversationStore())
 const {user} = storeToRefs(useUserStore())
 const route = useRoute()
 const room = route.params.call_id
-const {streaming, close, settings, declined, callSocket, hangup, hangupFn, startCalling, decline, stopCalling, accept, fullscreen, redial, isCaller } = useCallEvents()
+const {streaming, close, settings, declined, callSocket, hangup, hangupFn, startCalling, decline, stopCalling, accept, fullscreen, redial, isCaller,  } = useCallEvents()
 let video : HTMLVideoElement | null = null
 let canvas : HTMLCanvasElement | null = null
 
@@ -94,11 +97,37 @@ onMounted(() => {
     canvas.style.height = window.innerHeight + 'px'
     
     let promise = navigator.mediaDevices.getUserMedia({video: true, audio: true})
-    promise.then((signal) => {
+    promise.then((stream) => {
         if(video){
-            video.srcObject = signal
+            video.srcObject = stream
+            video.muted = true
             video.play()
         }
+
+        const mediaRecorder = new MediaRecorder(stream)
+        const chunks : BlobPart[] = []
+        mediaRecorder.ondataavailable = (event) => {
+            if(event.data.size > 0){
+                chunks.push(event.data)
+                
+            }
+        }
+
+
+
+        mediaRecorder.start()
+        
+        // mediaRecorder.onstop = () => {
+        //     const videoAudioBlob = new Blob(chunks, {type: 'video/webm'})
+        //     const fileReader = new FileReader() 
+
+        //     fileReader.onload = () => {
+        //         console.log(fileReader.result);
+                
+        //     }
+
+        //     fileReader.readAsArrayBuffer(videoAudioBlob)
+        // }
 
     }).catch((err) => alert("error:" + err))
     

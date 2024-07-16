@@ -1,6 +1,13 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: false },
+  nitro: {
+    runtimeConfig: {
+      public: {
+        backend_url: process.env.BACKEND_URL
+      }
+    }
+  },
   ssr: false,
   modules: ['vuetify-nuxt-module', '@pinia/nuxt'],
   vuetify: {

@@ -3,7 +3,7 @@
         <div v-if="conversation" class="px-5 pt-10">
             <div class="d-flex align-center flex-column">
                 <v-avatar size="150">
-                    <v-img :src="'https://source.unsplash.com/random/250x250/?person&' + conversation._id"></v-img>
+                    <v-img :src="'https://avatar.iran.liara.run/public?number=' + conversation.persons[0]._id"></v-img>
                 </v-avatar>
                 <h2 class="mt-5">{{  conversation.persons[0].name }}</h2>
                 <h4 class="font-weight-regular">You're friend in swift chat</h4>

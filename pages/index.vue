@@ -1,8 +1,8 @@
 <template>
     <v-navigation-drawer width="65" color="black" class="pa-0 d-flex flex-column">
         <v-list nav class="d-flex flex-column h-100 pt-2 px-0 align-center">
-            <v-avatar size="50" class="mt-1">
-                <v-img :src="'https://source.unsplash.com/random/250x250/?person'"></v-img>
+            <v-avatar size="50" class="mt-1" style="border: 2px solid white">
+                <v-img :src="'https://avatar.iran.liara.run/public?number=' + user?._id"></v-img>
             </v-avatar>
             <v-spacer></v-spacer>
             <div class="w-100">
@@ -19,7 +19,7 @@
             </div>
             <v-spacer></v-spacer>
             <div class="w-100">
-                <v-btn variant="text" block rounded="0" height="70" icon="mdi-logout" @click=""></v-btn>
+                <v-btn variant="text" block rounded="0" height="70" icon="mdi-logout" @click="logout"></v-btn>
             </div>
         </v-list>
     </v-navigation-drawer>
@@ -38,9 +38,11 @@ const $conversation = useConversationStore()
 const {conversations} = storeToRefs($conversation)
 const $user = useUserStore()
 const router = useRouter()
+const {user}  = storeToRefs(useUserStore())
 const logout = () => {
-    $user.logout()
-    router.push({name: 'login'})
+    $user.logout().then(() => {
+        window.location.reload()
+    })
 }
 
 

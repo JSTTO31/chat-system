@@ -39,7 +39,7 @@ export const useConversationStore = defineStore('conversation', () => {
             const response = await useApiFetch('/conversations', {})
             const {data, error} = response;
             if(!error.value){
-                conversations.value = data.value.conversations.slice(0, 8).map((item: Conversation) => ({...item, callStatus: null}))
+                conversations.value = data.value.conversations.slice(0, 5).map((item: Conversation) => ({...item, callStatus: null}))
             }
             return response
         } catch (error) {

@@ -5,10 +5,11 @@ import { Socket, io } from "socket.io-client";
 export default () => {
     const {user} = storeToRefs(useUserStore())
     const route = useRoute()
+    const config = useRuntimeConfig()
     const conversationId = route.query.conversation_id
     const callId = route.params.call_id
-    const conversationSocket = io('http://localhost:3001').emit('join_room', conversationId) 
-    const callSocket : Socket = io('http://localhost:3001').emit('join_room', callId) 
+    const conversationSocket = io(config.public.backend_url as string).emit('join_room', conversationId) 
+    const callSocket : Socket = io(config.public.backend_url as string).emit('join_room', callId) 
     const streaming = ref(false)
     const declined = ref(false)
     const hangup = ref(false)
@@ -17,12 +18,26 @@ export default () => {
         video: true,
         audio: true,
     })
+    const timer = computed(() => {
+        if(currentTime && timeStarted){
+            //@ts-ignore
+            let miliseconds : any  =  timeStarted - currentTime
+            let minutes : any = (miliseconds / 60).toLocaleString('en-US', {minimumIntegerDigits: 2})
+            miliseconds = (miliseconds % 60).toLocaleString('en-US', {minimumIntegerDigits: 2})
+            
+            return minutes + ':' +  miliseconds
+        }
 
+        return '00:00'
+    })
 
+    let timeStarted : Date | null = null 
+    let currentTime : Date | null = null
     let callingInterval : null | NodeJS.Timeout = null
     let streamingInterval : null | NodeJS.Timeout = null
 
     callSocket.on("call-streaming", ({imageUrl}) => {
+        currentTime = new Date()
         const image : null | HTMLImageElement = document.getElementById('call-image') as HTMLImageElement
         if(image){
             image.src = imageUrl
@@ -45,11 +60,9 @@ export default () => {
     
     callSocket.on('call-start', () => {
         streaming.value = true
+        timeStarted = new Date()
         startStreaming()
-        // timeStarted = new Date()
-        // setInterval(() => {
-        //     currentTime = new Date()
-        // },1000)
+
     })
 
 
@@ -119,6 +132,8 @@ export default () => {
     const startCalling = () => {
         declined.value = false
         callingInterval = setInterval(() => {
+            console.log('calling');
+            
             conversationSocket.emit('calling', {person: user.value, room: callId, conversationRoom: conversationId})
         }, 2500)
     }
@@ -167,5 +182,5 @@ export default () => {
         }
     }
 
-    return {close, fullscreen, startCalling, stopCalling, hangupFn, callSocket, conversationId, redial, decline, streaming, declined, accept, isCaller, hangup, settings, startStreaming}
+    return {close, fullscreen, startCalling, stopCalling, hangupFn, callSocket, conversationId, redial, decline, streaming, declined, accept, isCaller, hangup, settings, startStreaming, timer}
 }
