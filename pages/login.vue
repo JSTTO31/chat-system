@@ -57,7 +57,7 @@ const submit = async () => {
             $externalResults.value[key] = value.message
         }
     }else{
-        // location.reload()
+        location.reload()
     }
 }
 
