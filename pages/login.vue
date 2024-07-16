@@ -49,6 +49,7 @@ const submit = async () => {
     if(!await $v.value.$validate()) return
     //@ts-ignore
     const {error} = await $user.login(info)
+    console.log(error.value);
     
     if(error.value){
         for(const [key, value] of Object.entries(error.value.data.errors)){
@@ -56,7 +57,7 @@ const submit = async () => {
             $externalResults.value[key] = value.message
         }
     }else{
-        location.reload()
+        // location.reload()
     }
 }
 
